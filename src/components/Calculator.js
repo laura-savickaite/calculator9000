@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BeautifulScreen from "./BeautifulScreen";
 import AmazingNumberButton from './AmazingNumber/AmazingNumberButton'
 import GreatOperationButton from "./GreatOperation/GreatOperationButton";
@@ -8,7 +8,7 @@ import ItSOverNineThousand from "./ItSOverNineThousand";
 import Clear from "./Clear";
 import Save from "./Save";
 
-var checkResult = false
+
 function Calculator() {
 
     //??? CHANGEMENT D'ETAT DANS LE SCREEN
@@ -19,6 +19,7 @@ function Calculator() {
     const [valeurSecond, setValeurSecond] = useState("")
     const [operatoR, setOperator] = useState("")
     const [result, setResult] = useState("")
+    const [data, setData] = useState("")
     
     let handleClickNumberParent = (valeur) => {
         //le nombre premier sera toujours celui tapé, dans la seconde partie, dès qu'on clique sur un opérateur on le fait migré en "second nombre" qu'on ne touche donc pas
@@ -40,7 +41,6 @@ function Calculator() {
             setValeurFirst("")            
         }
         else {
-            checkResult = true
             setResult("") 
             setOperator(operator)
             setValeurSecond(result)
@@ -76,11 +76,39 @@ function Calculator() {
         setValeurSecond("")
     }
     
+
+//     useEffect(() => {
+//         alert('oui')
+//     //     if (result !== "") {
+//     //     async function insertData () {
+//     //         const sendData = await fetch('../PHP/server.php',{
+//     //             method: 'POST',
+//     //             body: JSON.stringify({résultat:result})
+//     //         })
+//     //         .then ((response) => response.text())
+//     //         .then ((response) => {
+//     //             console.log(response)
+//     //         })
+//     //         .catch((error) => console.log(error)) 
+        
+//     //     }
+//     // }
+// }, [data])
+
     let save = () => {
         if (result !== "") {
-            console.log("aya")            
+            fetch('http://localhost:8080/calculator9000/PHP/server.php',{
+                method: 'POST',
+                body: JSON.stringify({résultat:result})
+            })
+            .then ((response) => response.text())
+            .then ((response) => {
+                console.log(response)
+            })
+            .catch((error) => console.log(error))         
         }
     }
+
 
 
     //??? MULTIPLICATION DE MON BOUTON NUMBER
@@ -132,6 +160,7 @@ function Calculator() {
                     <Clear clear={clear}/> 
 
                     <Save save={save} />
+
                 </section>       
         </article>
     )
