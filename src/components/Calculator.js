@@ -7,6 +7,7 @@ import MagnificientEqualButton from './MagnificientEqualButton';
 import ItSOverNineThousand from "./ItSOverNineThousand";
 import Clear from "./Clear";
 import Save from "./Save";
+import Historic from "./Historic";
 
 
 function Calculator() {
@@ -164,8 +165,10 @@ let save = () => {
                     <Clear clear={clear}/> 
 
                     <Save save={save} />
-
-                </section>       
+                </section>  
+                <section>
+                    <Historic value={data}/>
+                </section>     
         </article>
     )
 
