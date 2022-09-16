@@ -11,13 +11,12 @@ function Historic({value}) {
             <ul>
                 {            
                     Object.keys(value).map((key, index) => {
-                        console.log(value[key].calcul);
                        return(
                             <li key={index}>
                                 {value[key].calcul} = {value[key].résultat}
                             </li>
                             ) 
-                            })
+                    })
                 }
             </ul>            
         </div>
