@@ -93,14 +93,17 @@ let save = () => {
     }
 }
 
-//     //??? GET TOUS LES RESULTATS PRECEDENTS
+    //??? GET TOUS LES RESULTATS PRECEDENTS
     useEffect(() => {
         async function catchData () {
             await fetch('http://localhost:8080/calculator9000/PHP/getdata.php')
-            .then ((response) => response.text())
+            .then ((response) => response.json())
             .then ((response) => {
                 console.log(response)
-                console.log('hey')
+                response.forEach(element => {
+                    setData(element.calcul + "=" + element.résultat)
+                });
+                
             })
             .catch((error) => console.log(error)) 
         } 
