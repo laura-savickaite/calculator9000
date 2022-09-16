@@ -102,13 +102,7 @@ let save = () => {
             await fetch('http://localhost:8080/calculator9000/PHP/getdata.php')
             .then ((response) => response.json())
             .then ((response) => {
-                console.log(response)
                 setData(response)
-                // response.forEach(element => {
-                //     setData(data.map)
-                //     // console.log(element.calcul)
-                //     // setData(element.calcul)
-                // });
             })
             .catch((error) => console.log(error)) 
         } 
