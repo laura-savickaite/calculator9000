@@ -95,6 +95,7 @@ let save = () => {
     }
 }
 
+
     //??? GET TOUS LES RESULTATS PRECEDENTS
     useEffect(() => {
         async function catchData () {
@@ -102,10 +103,12 @@ let save = () => {
             .then ((response) => response.json())
             .then ((response) => {
                 console.log(response)
-                response.forEach(element => {
-                    setData(element.calcul + "=" + element.résultat)
-                });
-                
+                setData(response)
+                // response.forEach(element => {
+                //     setData(data.map)
+                //     // console.log(element.calcul)
+                //     // setData(element.calcul)
+                // });
             })
             .catch((error) => console.log(error)) 
         } 
@@ -167,7 +170,7 @@ let save = () => {
                     <Save save={save} />
                 </section>  
                 <section>
-                    <Historic value={data}/>
+                    <Historic value={data} />
                 </section>     
         </article>
     )
