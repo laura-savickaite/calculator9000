@@ -75,39 +75,37 @@ function Calculator() {
         setValeurFirst("")
         setValeurSecond("")
     }
+   
     
-
-//     useEffect(() => {
-//         alert('oui')
-//     //     if (result !== "") {
-//     //     async function insertData () {
-//     //         const sendData = await fetch('../PHP/server.php',{
-//     //             method: 'POST',
-//     //             body: JSON.stringify({résultat:result})
-//     //         })
-//     //         .then ((response) => response.text())
-//     //         .then ((response) => {
-//     //             console.log(response)
-//     //         })
-//     //         .catch((error) => console.log(error)) 
-        
-//     //     }
-//     // }
-// }, [data])
-
     let save = () => {
         if (result !== "") {
             fetch('http://localhost:8080/calculator9000/PHP/server.php',{
                 method: 'POST',
-                body: JSON.stringify(result)
+                body: JSON.stringify({résultat: result, calcul: valeurSecond + operatoR + valeurFirst})
             })
-            .then ((response) => response.text())
+            .then ((response) => response.json())
             .then ((response) => {
                 console.log(response)
             })
             .catch((error) => console.log(error))         
         }
     }
+
+
+//     //??? GET TOUS LES RESULTATS PRECEDENTS
+//     useEffect(() => {
+//         async function catchData () {
+//             await fetch('http://localhost:8080/calculator9000/PHP/getdata.php')
+//             .then ((response) => response.json())
+//             .then ((response) => {
+//                 console.log(response)
+//                 console.log('hey')
+//             })
+//             .catch((error) => console.log(error)) 
+//         } 
+//         catchData()
+// }, [])
+
 
 
 
