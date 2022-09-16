@@ -124,49 +124,54 @@ let save = () => {
 
     //??? MON RETURN
     return (
-            <article>
+            <main>
 
-                <section>
+                <div>
                     {
                         result > 9000 ? <ItSOverNineThousand /> : null
                     }
-                </section>
+                </div>
 
-                <section>
-                {console.log(result)}
-                    <BeautifulScreen keypress={
-                        result === "" ? valeurSecond + operatoR + valeurFirst : result
-                        } />
-                </section>   
-                
-                <section>
-                    {ButtonNumbers}
-                </section>    
-
-                <section>
-                {/* You have to use your switch statement in a function. 
-                Le for ne marche pas à l'intérieur du return contrairement à map*/}
-                    {            
-                        Operators.map((operator, index) => {
-                            {/* attention ma value renvoie un objet !!!!!!! c'est pour ceci qu'après je dois préciser que c'est operator, c'est un json il ne faut pas oublier */}
-                            {/* console.log(value) */}
-                            return (
-                                <GreatOperationButton  handleClickOperatorParent={handleClickOperatorParent} key={index} operator={operator.operator} />
-                            )
-                        }
-                        )
-                    } 
+                <article className="flex flex-row justify-around pr-5">  
+                    <section className="w-96 border-2 border-gray-500 rounded p-5">
+                        <div>
+                        {console.log(result)}
+                            <BeautifulScreen keypress={
+                                result === "" ? valeurSecond + operatoR + valeurFirst : result
+                                } />
+                        </div>   
                     
-                    <MagnificientEqualButton operation={calcul} /> 
+                        <div className="flex flex-wrap justify-around">
+                            {ButtonNumbers}
+                        </div>    
 
-                    <Clear clear={clear}/> 
+                        <div className="flex flex-wrap">
+                        {/* You have to use your switch statement in a function. 
+                        Le for ne marche pas à l'intérieur du return contrairement à map*/}
+                            {            
+                                Operators.map((operator, index) => {
+                                    {/* attention ma value renvoie un objet !!!!!!! c'est pour ceci qu'après je dois préciser que c'est operator, c'est un json il ne faut pas oublier */}
+                                    {/* console.log(value) */}
+                                    return (
+                                        <GreatOperationButton  handleClickOperatorParent={handleClickOperatorParent} key={index} operator={operator.operator} />
+                                    )
+                                }
+                                )
+                            } 
+                            
+                            <MagnificientEqualButton operation={calcul} /> 
 
-                    <Save save={save} />
-                </section>  
-                <section>
-                    <Historic value={data} />
-                </section>     
-        </article>
+                            <Clear clear={clear}/> 
+
+                            <Save save={save} />
+                        </div>  
+                    </section>
+                    
+                    <section className="bg-violet-300">
+                        <Historic value={data} />
+                    </section>  
+                </article>   
+        </main>
     )
 
 }

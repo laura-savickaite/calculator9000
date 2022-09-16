@@ -9,7 +9,7 @@ function GreatOperationButton({operator, handleClickOperatorParent}) {
 
     return(
         <div>
-            <button onClick={ () => handleClickOperatorEnfant() }>{operator}</button>
+            <button className="bg-orange-100 border-2 border-gray-900 rounded p-3 m-0.5" onClick={ () => handleClickOperatorEnfant() }>{operator}</button>
         </div>
     )
 }

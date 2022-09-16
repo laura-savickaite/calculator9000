@@ -7,7 +7,7 @@ function Save({save}) {
     }
 
     return(
-        <button onClick={ () => clickedSave() }>Save</button>
+        <button className="border-2 border-dashed border-orange-400 rounded p-3 m-0.5" onClick={ () => clickedSave() }>Save</button>
     ) 
 }
 

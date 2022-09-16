@@ -7,7 +7,7 @@ function Historic({value}) {
 
     return(
         <div>
-            <p>Historique des résultats</p>
+            <p className="text-2xl font-bold underline font-mono">Historique des résultats</p>
             <ul>
                 {            
                     Object.keys(value).map((key, index) => {

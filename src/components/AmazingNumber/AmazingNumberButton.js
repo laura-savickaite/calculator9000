@@ -14,7 +14,7 @@ function AmazingNumberButton({value, handleClickNumberParent}) {
 
     return (
         <div>
-            <button onClick={ () => handleClickNumberEnfant() } className="buttonsNumber">{value}</button>
+            <button onClick={ () => handleClickNumberEnfant() } className="buttonsNumber border-2 border-gray-900 rounded p-3 m-0.5">{value}</button>
         </div>    
     )
 
