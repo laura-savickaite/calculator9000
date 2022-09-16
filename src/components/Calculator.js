@@ -99,7 +99,7 @@ function Calculator() {
         if (result !== "") {
             fetch('http://localhost:8080/calculator9000/PHP/server.php',{
                 method: 'POST',
-                body: JSON.stringify({résultat:result})
+                body: JSON.stringify(result)
             })
             .then ((response) => response.text())
             .then ((response) => {
