@@ -77,34 +77,40 @@ function Calculator() {
     }
    
     
-    let save = () => {
-        if (result !== "") {
-            fetch('http://localhost:8080/calculator9000/PHP/server.php',{
-                method: 'POST',
-                body: JSON.stringify({résultat: result, calcul: valeurSecond + operatoR + valeurFirst})
-            })
+
+
+var calculEntier = valeurSecond + operatoR + valeurFirst
+let save = () => {
+    if (result !== "") {
+        fetch('http://localhost:8080/calculator9000/PHP/server.php',{
+            method: 'POST',
+            body: JSON.stringify({résultat: result, calcul: calculEntier})
+        })
+        .then ((response) => response.text())
+        .then ((response) => {
+            console.log(response)
+        })
+        .catch((error) => console.log(error))         
+    }
+}
+
+    //??? GET TOUS LES RESULTATS PRECEDENTS
+    useEffect(() => {
+        async function catchData () {
+            await fetch('http://localhost:8080/calculator9000/PHP/getdata.php')
             .then ((response) => response.json())
             .then ((response) => {
                 console.log(response)
+                response.forEach(element => {
+                    setData(element.calcul + "=" + element.résultat)
+                });
+                
             })
-            .catch((error) => console.log(error))         
-        }
-    }
+            .catch((error) => console.log(error)) 
+        } 
+        catchData()
+}, [])
 
-
-//     //??? GET TOUS LES RESULTATS PRECEDENTS
-//     useEffect(() => {
-//         async function catchData () {
-//             await fetch('http://localhost:8080/calculator9000/PHP/getdata.php')
-//             .then ((response) => response.json())
-//             .then ((response) => {
-//                 console.log(response)
-//                 console.log('hey')
-//             })
-//             .catch((error) => console.log(error)) 
-//         } 
-//         catchData()
-// }, [])
 
 
 
