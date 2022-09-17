@@ -90,6 +90,7 @@ let save = () => {
         .then ((response) => response.text())
         .then ((response) => {
             console.log(response)
+            window.location.reload(false);
         })
         .catch((error) => console.log(error))         
     }
@@ -133,7 +134,7 @@ let save = () => {
                 </div>
 
                 <article className="flex flex-row justify-around pr-5">  
-                    <section className="w-96 border-2 border-gray-500 rounded p-5">
+                    <section className="w-96 border-2 border-gray-500 rounded p-5 font-mono">
                         <div>
                         {console.log(result)}
                             <BeautifulScreen keypress={
@@ -143,9 +144,7 @@ let save = () => {
                     
                         <div className="flex flex-wrap justify-around">
                             {ButtonNumbers}
-                        </div>    
 
-                        <div className="flex flex-wrap">
                         {/* You have to use your switch statement in a function. 
                         Le for ne marche pas à l'intérieur du return contrairement à map*/}
                             {            
@@ -158,16 +157,15 @@ let save = () => {
                                 }
                                 )
                             } 
-                            
-                            <MagnificientEqualButton operation={calcul} /> 
-
                             <Clear clear={clear}/> 
+
+                            <MagnificientEqualButton operation={calcul} /> 
 
                             <Save save={save} />
                         </div>  
                     </section>
                     
-                    <section className="bg-violet-300">
+                    <section className="bg-orange-50">
                         <Historic value={data} />
                     </section>  
                 </article>   
