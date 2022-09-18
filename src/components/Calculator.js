@@ -125,7 +125,7 @@ let save = () => {
 
     //??? MON RETURN
     return (
-            <main>
+            <main className="mt-20">
 
                 <div>
                     {
@@ -165,7 +165,7 @@ let save = () => {
                         </div>  
                     </section>
                     
-                    <section className="bg-orange-50">
+                    <section className="bg-orange-50 text-center">
                         <Historic value={data} />
                     </section>  
                 </article>   
